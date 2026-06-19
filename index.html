@@ -3,105 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Interface - Landing Page</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Photon Flux Energy | Simple Solar Node</title>
+    <!-- Tailwind CSS for Layout Structures -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Three.js Library for True 3D Particle Mesh -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #050505;
+            background-color: #03050a;
         }
         .font-display {
             font-family: 'Orbitron', sans-serif;
         }
-        /* Glowing neon mesh effect to match the image */
+        /* 3D Viewport Window Behind Layout Content */
+        #canvas-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
         .neon-glow {
-            text-shadow: 0 0 10px rgba(34, 197, 94, 0.6), 0 0 20px rgba(34, 197, 94, 0.4);
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
         }
-        .matrix-bg {
-            background: radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.15) 0%, rgba(5, 5, 5, 1) 70%);
+        /* Custom styled chat log container */
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
         }
-        /* Custom animated grid overlay to emulate the 3D neural mesh feel */
-        .mesh-grid {
-            background-image: linear-gradient(rgba(34, 197, 94, 0.05) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            perspective: 500px;
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between overflow-x-hidden matrix-bg relative">
+<body class="text-white min-h-screen flex flex-col justify-between overflow-x-hidden relative">
 
-    <!-- Ambient Grid Overlay -->
-    <div class="absolute inset-0 mesh-grid opacity-60 pointer-events-none"></div>
+    <!-- Interactive 3D Mesh Render Target Layer -->
+    <canvas id="canvas-3d"></canvas>
 
-    <!-- Header Navigation -->
+    <!-- Top Menu Header -->
     <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
-        <div class="flex items-center gap-2 border border-emerald-500/30 px-3 py-1.5 rounded-md bg-black/40 backdrop-blur-md">
+        <div class="flex items-center gap-2 border border-emerald-500/20 px-3 py-1.5 rounded-md bg-black/40 backdrop-blur-md">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="font-display text-xs tracking-widest text-emerald-400 font-bold uppercase">SynapseX</span>
+            <span class="font-display text-xs tracking-widest text-emerald-400 font-bold uppercase">Photon Flux // Node-59</span>
         </div>
-        <button class="text-white hover:text-emerald-400 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke-currentColor="the w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-            </svg>
-        </button>
+        <div class="text-xs text-emerald-400 font-semibold border-b border-emerald-500/20 pb-0.5">
+            📍 Parow, Cape Town
+        </div>
     </header>
 
-    <!-- Main Hero Content -->
-    <main class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 items-center gap-12 flex-grow relative z-10 my-12">
+    <!-- Main Content Frame: Matching the Left-Center-Right Layout Profile of the Template -->
+    <main class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 flex-grow relative z-10 my-8">
         
-        <!-- Left Column: Primary Typography -->
-        <div class="lg:col-span-5 flex flex-col space-y-4 order-1 lg:order-1">
-            <h1 class="font-display text-5xl md:text-7xl font-black uppercase tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-br from-white via-neutral-200 to-neutral-400">
-                Brain <br> <span class="text-emerald-400 neon-glow">And Body</span>
+        <!-- LEFT SIDE: Simple Bold Value Statement -->
+        <div class="lg:col-span-4 flex flex-col space-y-3">
+            <div class="text-xs font-display tracking-widest text-emerald-400 font-bold uppercase">// SYSTEM STATUS</div>
+            <h1 class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight leading-none">
+                Beat <br> <span class="text-emerald-400 neon-glow">The Outages.</span>
             </h1>
+            <p class="text-sm text-neutral-400 max-w-sm leading-relaxed pt-2">
+                We design and set up clean, easy-to-use solar installations right here in Parow. Keep your household appliances powered seamlessly through loadshedding windows[cite: 1] without the headache.
+            </p>
         </div>
 
-        <!-- Center Column: Cybernetic Visual Anchor -->
-        <div class="lg:col-span-4 flex justify-center relative order-3 lg:order-2">
-            <!-- Glowing back drop light -->
-            <div class="absolute w-72 h-72 rounded-full bg-emerald-500/20 blur-[80px] -z-10 animate-pulse"></div>
+        <!-- CENTER SIDE: Simple Live Tool (Replaces the abstract head with an interactive grid) -->
+        <div class="lg:col-span-4 flex justify-center relative my-8 lg:my-0">
+            <div class="absolute w-72 h-72 rounded-full bg-emerald-500/10 blur-[90px] -z-10"></div>
             
-            <!-- Abstract Bio-Digital Node Representation -->
-            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full border border-emerald-500/20 flex items-center justify-center p-6 bg-black/40 backdrop-blur-xl group hover:border-emerald-400/40 transition-all duration-500">
-                <div class="absolute inset-4 rounded-full border border-dashed border-emerald-500/10 animate-[spin_40s_linear_infinite]"></div>
-                
-                <!-- Inner Neural Matrix Text Context -->
-                <div class="text-center p-4">
-                    <p class="text-xs text-neutral-400 leading-relaxed font-light">
-                        Built at the intersection of neuroscience and artificial intelligence. SynapseX continuously maps neural pathways, cognitive load, and physiological states into a single adaptive intelligence layer.
-                    </p>
+            <div class="relative w-full max-w-sm rounded-2xl border border-emerald-500/20 p-6 bg-black/60 backdrop-blur-xl">
+                <div class="text-center border-b border-neutral-800 pb-4 mb-4">
+                    <span class="text-[10px] font-display tracking-widest text-neutral-400 uppercase">Interactive Calculator</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Estimate Your Sun Power</h3>
                 </div>
                 
-                <!-- Dynamic Corner Tech Flourishes -->
-                <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-emerald-500"></div>
-                <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-emerald-500"></div>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs text-neutral-400 mb-1">
+                            <span>Property Scale</span>
+                            <span id="scale-lbl" class="text-emerald-400 font-mono">Medium House</span>
+                        </div>
+                        <input type="range" id="scale-slider" min="1" max="3" step="1" value="2" class="w-full accent-emerald-500 bg-neutral-800 h-1.5 rounded" oninput="runSimpleCalc()">
+                    </div>
+
+                    <div class="bg-neutral-900/60 border border-neutral-800 p-4 rounded-xl text-center">
+                        <div class="text-[10px] font-display tracking-wider text-neutral-500 uppercase">Estimated Daily Generation</div>
+                        <div class="text-3xl font-bold text-emerald-400 font-mono my-1" id="units-out">24 Units</div>
+                        <p class="text-[11px] text-neutral-400">Enough to easily protect your fridge, Wi-Fi, lights, and entertainment centers from cutting out.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Right Column: Secondary Typography -->
-        <div class="lg:col-span-3 lg:text-right flex flex-col space-y-2 order-2 lg:order-3">
-            <h2 class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight leading-none text-neutral-300">
-                One <br><span class="text-white">Network</span>
-            </h2>
+        <!-- RIGHT SIDE: Integrated WhatsApp Sales AI Assistant -->
+        <div class="lg:col-span-4 flex flex-col h-[400px] w-full max-w-sm lg:ml-auto rounded-2xl border border-emerald-500/20 bg-black/60 backdrop-blur-xl overflow-hidden">
+            <div class="bg-emerald-500/10 px-4 py-3 border-b border-emerald-500/20 flex justify-between items-center">
+                <span class="text-xs font-display tracking-wider font-bold text-emerald-400">⚡ QUICK PRICE ESTIMATOR</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            </div>
+            
+            <!-- Chat Logs -->
+            <div class="flex-grow p-4 overflow-y-auto flex flex-col gap-3 text-xs chat-scroll" id="chatDisplay">
+                <div class="bg-neutral-900 text-neutral-200 p-3 rounded-xl rounded-tl-none border-l-2 border-emerald-500 max-w-[90%]">
+                    Hi! Let's get your pricing details sorted. To start, how much do you normally pay for electricity each month? (e.g., R2000)
+                </div>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="p-3 border-t border-neutral-900 bg-neutral-950 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Type your answer..." class="flex-grow bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-emerald-500/40" onkeydown="if(event.key === 'Enter') submitChatStep()">
+                <button onclick="submitChatStep()" class="bg-emerald-500 hover:bg-emerald-400 text-black px-3 py-2 rounded-lg font-bold text-xs transition-colors">→</button>
+            </div>
         </div>
 
     </main>
 
-    <!-- Footer Meta-details / Action Elements -->
-    <footer class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center border-t border-neutral-900 gap-4 relative z-10 bg-black/20 backdrop-blur-sm">
-        <p class="text-xs text-neutral-500 tracking-wider">© 2026 SYNAPSEX ARCHITECTURE. ALL RIGHTS RESERVED.</p>
-        <div class="flex gap-6 text-xs tracking-widest uppercase font-display text-neutral-400">
-            <a href="#" class="hover:text-emerald-400 transition-colors">Interface Matrix</a>
-            <a href="#" class="hover:text-emerald-400 transition-colors">BioField Protocol</a>
-        </div>
+    <!-- Simple Page Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center border-t border-neutral-900 gap-2 relative z-10 bg-black/10 text-[11px] text-neutral-500">
+        <p>© 2026 PHOTON FLUX ENERGY. ALL RIGHTS RESERVED.[cite: 1]</p>
+        <p>Site infrastructure created by <span class="text-emerald-500 font-bold">iederees-create</span>[cite: 1]</p>
     </footer>
 
+    <script>
+        // --- THREE.JS INTERACTIVE 3D GRAPHICS LOGIC ---
+        const canvas = document.querySelector('#canvas-3d');
+        const scene = new THREE.Scene();
+        
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 55;
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Generate particle dots matching the premium image framework blueprint
+        const dotCount = 150;
+        const geometry = new THREE.BufferGeometry();
+        const coords = new Float32Array(dotCount * 3);
+
+        for(let i=0; i < dotCount * 3; i++) {
+            coords[i] = (Math.random() - 0.5) * 110; 
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(coords, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.65,
+            color: 0x10b981, 
+            transparent: true,
+            opacity: 0.6
+        });
+
+        const pointsMesh = new THREE.Points(geometry, material);
+        scene.add(pointsMesh);
+
+        // Smooth Mouse Inertia Multipliers
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - window.innerWidth / 2) * 0.03;
+            mouseY = (event.clientY - window.innerHeight / 2) * 0.03;
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function frameRender() {
+            requestAnimationFrame(frameRender);
+            pointsMesh.rotation.y += 0.001;
+            pointsMesh.rotation.x += 0.0005;
+
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        }
+        frameRender();
+
+        // --- INTERACTIVE CALCULATOR LOGIC ---
+        function runSimpleCalc() {
+            const val = parseInt(document.getElementById('scale-slider').value);
+            const labels = ["Small Home (4 Panels)", "Medium House (6 Panels)", "Large House / Shop (12+ Panels)"];
+            const calculations = ["16 Units", "24 Units", "48 Units"];
+            
+            document.getElementById('scale-lbl').innerText = labels[val - 1];
+            document.getElementById('units-out').innerText = calculations[val - 1];
+        }
+
+        // --- SALES AI WIDGET LOGIC ---
+        let internalStep = 0;
+        let storedBillValue = "";
+
+        function submitChatStep() {
+            const field = document.getElementById('chatInput');
+            const reply = field.value.trim();
+            if(!reply) return;
+
+            showMsg(reply, 'user');
+            field.value = '';
+
+            setTimeout(() => {
+                if(internalStep === 0) {
+                    storedBillValue = reply;
+                    showMsg("Got it. Are you just hoping to back up your critical items during outages, or are you looking to go entirely independent off the grid?", 'bot');
+                    internalStep++;
+                } else if(internalStep === 1) {
+                    showMsg("Perfect! I've prepared your configuration snapshot data. Click below to send this directly to our team on WhatsApp so we can calculate your final quote.", 'bot');
+                    
+                    const textData = encodeURIComponent(`Hi! I used the site assistant tool. My power bill is ${storedBillValue} and my setup goal is: ${reply}. Please assist with quotation steps.`);
+                    
+                    const block = document.createElement('div');
+                    block.innerHTML = `<a href="https://wa.me/27845272182?text=${textData}" target="_blank" style="display:block; background:#10b981; color:#000; text-align:center; padding:0.6rem; margin-top:0.4rem; border-radius:8px; font-weight:bold; text-decoration:none;">💬 Send Quote Profile to WhatsApp</a>`;
+                    document.getElementById('chatDisplay').appendChild(block);
+                    internalStep++;
+                }
+            }, 700);
+        }
+
+        function showMsg(msgText, entity) {
+            const targetLog = document.getElementById('chatDisplay');
+            const bubbleNode = document.createElement('div');
+            
+            if(entity === 'user') {
+                bubbleNode.className = "bg-emerald-500 text-black p-3 rounded-xl rounded-tr-none max-w-[90%] align-self-end self-end font-semibold ml-auto";
+            } else {
+                bubbleNode.className = "bg-neutral-900 text-neutral-200 p-3 rounded-xl rounded-tl-none border-l-2 border-emerald-500 max-w-[90%] self-start";
+            }
+            
+            bubbleNode.innerText = msgText;
+            targetLog.appendChild(bubbleNode);
+            targetLog.scrollTop = targetLog.scrollHeight;
+        }
+    </script>
 </body>
 </html>
