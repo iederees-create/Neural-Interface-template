@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photon Flux Energy | Simple Solar Node</title>
-    <!-- Tailwind CSS for Layout Structures -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- Three.js Library for True 3D Particle Mesh -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
@@ -43,12 +41,10 @@
         }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between overflow-x-hidden relative">
+<body class="text-white min-h-screen flex flex-col justify-between overflow-x-hidden relative pb-20 lg:pb-0">
 
-    <!-- Interactive 3D Mesh Render Target Layer -->
     <canvas id="canvas-3d"></canvas>
 
-    <!-- Top Menu Header -->
     <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
         <div class="flex items-center gap-2 border border-emerald-500/20 px-3 py-1.5 rounded-md bg-black/40 backdrop-blur-md">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -59,22 +55,19 @@
         </div>
     </header>
 
-    <!-- Main Content Frame: Matching the Left-Center-Right Layout Profile of the Template -->
-    <main class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 flex-grow relative z-10 my-8">
+    <main class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 flex-grow relative z-10 my-4">
         
-        <!-- LEFT SIDE: Simple Bold Value Statement -->
         <div class="lg:col-span-4 flex flex-col space-y-3">
             <div class="text-xs font-display tracking-widest text-emerald-400 font-bold uppercase">// SYSTEM STATUS</div>
             <h1 class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight leading-none">
                 Beat <br> <span class="text-emerald-400 neon-glow">The Outages.</span>
             </h1>
             <p class="text-sm text-neutral-400 max-w-sm leading-relaxed pt-2">
-                We design and set up clean, easy-to-use solar installations right here in Parow. Keep your household appliances powered seamlessly through loadshedding windows[cite: 1] without the headache.
+                We design and set up clean, easy-to-use solar installations right here in Parow. Keep your household appliances powered seamlessly through loadshedding windows without the headache.
             </p>
         </div>
 
-        <!-- CENTER SIDE: Simple Live Tool (Replaces the abstract head with an interactive grid) -->
-        <div class="lg:col-span-4 flex justify-center relative my-8 lg:my-0">
+        <div class="lg:col-span-4 flex justify-center relative my-4 lg:my-0">
             <div class="absolute w-72 h-72 rounded-full bg-emerald-500/10 blur-[90px] -z-10"></div>
             
             <div class="relative w-full max-w-sm rounded-2xl border border-emerald-500/20 p-6 bg-black/60 backdrop-blur-xl">
@@ -89,7 +82,7 @@
                             <span>Property Scale</span>
                             <span id="scale-lbl" class="text-emerald-400 font-mono">Medium House</span>
                         </div>
-                        <input type="range" id="scale-slider" min="1" max="3" step="1" value="2" class="w-full accent-emerald-500 bg-neutral-800 h-1.5 rounded" oninput="runSimpleCalc()">
+                        <input type="range" id="scale-slider" min="1" max="3" step="1" value="2" class="w-full accent-emerald-500 bg-neutral-800 h-1.5 rounded cursor-pointer" oninput="runSimpleCalc()">
                     </div>
 
                     <div class="bg-neutral-900/60 border border-neutral-800 p-4 rounded-xl text-center">
@@ -101,21 +94,18 @@
             </div>
         </div>
 
-        <!-- RIGHT SIDE: Integrated WhatsApp Sales AI Assistant -->
-        <div class="lg:col-span-4 flex flex-col h-[400px] w-full max-w-sm lg:ml-auto rounded-2xl border border-emerald-500/20 bg-black/60 backdrop-blur-xl overflow-hidden">
+        <div class="hidden lg:col-span-4 lg:flex flex-col h-[400px] w-full max-w-sm ml-auto rounded-2xl border border-emerald-500/20 bg-black/60 backdrop-blur-xl overflow-hidden">
             <div class="bg-emerald-500/10 px-4 py-3 border-b border-emerald-500/20 flex justify-between items-center">
                 <span class="text-xs font-display tracking-wider font-bold text-emerald-400">⚡ QUICK PRICE ESTIMATOR</span>
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
             </div>
             
-            <!-- Chat Logs -->
             <div class="flex-grow p-4 overflow-y-auto flex flex-col gap-3 text-xs chat-scroll" id="chatDisplay">
                 <div class="bg-neutral-900 text-neutral-200 p-3 rounded-xl rounded-tl-none border-l-2 border-emerald-500 max-w-[90%]">
                     Hi! Let's get your pricing details sorted. To start, how much do you normally pay for electricity each month? (e.g., R2000)
                 </div>
             </div>
 
-            <!-- Input Bar -->
             <div class="p-3 border-t border-neutral-900 bg-neutral-950 flex gap-2">
                 <input type="text" id="chatInput" placeholder="Type your answer..." class="flex-grow bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-emerald-500/40" onkeydown="if(event.key === 'Enter') submitChatStep()">
                 <button onclick="submitChatStep()" class="bg-emerald-500 hover:bg-emerald-400 text-black px-3 py-2 rounded-lg font-bold text-xs transition-colors">→</button>
@@ -124,10 +114,19 @@
 
     </main>
 
-    <!-- Simple Page Footer -->
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-t border-emerald-500/20 p-4 flex justify-between items-center">
+        <div>
+            <div class="text-[10px] uppercase font-display tracking-wider text-neutral-400">Ready to beat the grid?</div>
+            <div class="text-sm font-bold text-white">Get Your Solar Quote</div>
+        </div>
+        <a href="https://wa.me/27845272182?text=Hi%20there,%20I'd%20like%20to%20get%20a%20solar%20quote%20for%20my%20home%20in%20Parow." target="_blank" class="bg-emerald-500 text-black font-bold text-xs px-4 py-2.5 rounded-lg shadow-lg shadow-emerald-500/20">
+            💬 WhatsApp Quote
+        </a>
+    </div>
+
     <footer class="w-full max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center border-t border-neutral-900 gap-2 relative z-10 bg-black/10 text-[11px] text-neutral-500">
-        <p>© 2026 PHOTON FLUX ENERGY. ALL RIGHTS RESERVED.[cite: 1]</p>
-        <p>Site infrastructure created by <span class="text-emerald-500 font-bold">iederees-create</span>[cite: 1]</p>
+        <p>© 2026 PHOTON FLUX ENERGY. ALL RIGHTS RESERVED.</p>
+        <p>Site infrastructure created by <span class="text-emerald-500 font-bold">iederees-create</span></p>
     </footer>
 
     <script>
@@ -142,26 +141,34 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Generate particle dots matching the premium image framework blueprint
-        const dotCount = 150;
+        // Generate particle dots in a grid formation mimicking a clean solar matrix array
+        const dotCount = 200;
         const geometry = new THREE.BufferGeometry();
         const coords = new Float32Array(dotCount * 3);
 
-        for(let i=0; i < dotCount * 3; i++) {
-            coords[i] = (Math.random() - 0.5) * 110; 
+        // Form dots into an organized matrix plain grid structure instead of pure chaos
+        for (let i = 0; i < dotCount; i++) {
+            const row = Math.floor(i / 14);
+            const col = i % 14;
+            coords[i * 3] = (col - 7) * 8 + (Math.random() - 0.5) * 2;
+            coords[i * 3 + 1] = (row - 7) * 8 + (Math.random() - 0.5) * 2;
+            coords[i * 3 + 2] = (Math.random() - 0.5) * 15;
         }
 
         geometry.setAttribute('position', new THREE.BufferAttribute(coords, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.65,
+            size: 0.7,
             color: 0x10b981, 
             transparent: true,
-            opacity: 0.6
+            opacity: 0.5
         });
 
         const pointsMesh = new THREE.Points(geometry, material);
         scene.add(pointsMesh);
+
+        // Interactive parameters changed dynamically by UI choices
+        let energySpeedMultiplier = 1.0;
 
         // Smooth Mouse Inertia Multipliers
         let mouseX = 0, mouseY = 0;
@@ -178,8 +185,10 @@
 
         function frameRender() {
             requestAnimationFrame(frameRender);
-            pointsMesh.rotation.y += 0.001;
-            pointsMesh.rotation.x += 0.0005;
+            
+            // Speed of the grid rotation changes based on the user's solar production output
+            pointsMesh.rotation.y += 0.0008 * energySpeedMultiplier;
+            pointsMesh.rotation.x += 0.0004 * energySpeedMultiplier;
 
             camera.position.x += (mouseX - camera.position.x) * 0.05;
             camera.position.y += (-mouseY - camera.position.y) * 0.05;
@@ -189,7 +198,9 @@
         }
         frameRender();
 
-        // --- INTERACTIVE CALCULATOR LOGIC ---
+        // --- INTERACTIVE CALCULATOR LOGIC & DYNAMIC CROSS-TALK ---
+        let hasTriggeredAIProactiveMessage = false;
+
         function runSimpleCalc() {
             const val = parseInt(document.getElementById('scale-slider').value);
             const labels = ["Small Home (4 Panels)", "Medium House (6 Panels)", "Large House / Shop (12+ Panels)"];
@@ -197,6 +208,20 @@
             
             document.getElementById('scale-lbl').innerText = labels[val - 1];
             document.getElementById('units-out').innerText = calculations[val - 1];
+
+            // 1. DYNAMIC BACKGROUND INTERACTION: Make particles move faster/brighter with bigger solar systems
+            energySpeedMultiplier = val * 1.8;
+            material.size = 0.5 + (val * 0.2);
+            material.needsUpdate = true;
+
+            // 2. PROGRESSIVE REVEAL JUMPSTART: If user plays with the slider, wake up the chat assistant dynamically
+            if (!hasTriggeredAIProactiveMessage && internalStep === 0) {
+                hasTriggeredAIProactiveMessage = true;
+                setTimeout(() => {
+                    showMsg(`🤖 I notice you're looking at a ${labels[val - 1]} setup! Would you like to check what a custom system like that costs to buy or lease?`, 'bot');
+                    internalStep = 1; // Progress the sales conversation flow past step 0 naturally
+                }, 1000);
+            }
         }
 
         // --- SALES AI WIDGET LOGIC ---
@@ -214,12 +239,12 @@
             setTimeout(() => {
                 if(internalStep === 0) {
                     storedBillValue = reply;
-                    showMsg("Got it. Are you just hoping to back up your critical items during outages, or are you looking to go entirely independent off the grid?", 'bot');
+                    showMsg("Got it! Are you just hoping to back up your critical items (like Wi-Fi, TV, lights) during outages, or are you looking to go completely off the grid?", 'bot');
                     internalStep++;
                 } else if(internalStep === 1) {
-                    showMsg("Perfect! I've prepared your configuration snapshot data. Click below to send this directly to our team on WhatsApp so we can calculate your final quote.", 'bot');
+                    showMsg("Perfect! I've prepared your configuration snapshot details. Click below to send this directly to our team on WhatsApp so we can calculate your final quote.", 'bot');
                     
-                    const textData = encodeURIComponent(`Hi! I used the site assistant tool. My power bill is ${storedBillValue} and my setup goal is: ${reply}. Please assist with quotation steps.`);
+                    const textData = encodeURIComponent(`Hi! I used the site assistant tool. My power bill estimate is ${storedBillValue || 'provided via slider interaction'} and my custom setup goal is: ${reply}. Please assist with quotation steps.`);
                     
                     const block = document.createElement('div');
                     block.innerHTML = `<a href="https://wa.me/27845272182?text=${textData}" target="_blank" style="display:block; background:#10b981; color:#000; text-align:center; padding:0.6rem; margin-top:0.4rem; border-radius:8px; font-weight:bold; text-decoration:none;">💬 Send Quote Profile to WhatsApp</a>`;
@@ -231,6 +256,8 @@
 
         function showMsg(msgText, entity) {
             const targetLog = document.getElementById('chatDisplay');
+            if(!targetLog) return; // Prevent break points if loaded on mobile viewport layouts
+
             const bubbleNode = document.createElement('div');
             
             if(entity === 'user') {
